@@ -1,0 +1,31 @@
+module "HubandSpoke" {
+    source       = "./hubandspoke"
+    hub_rg_name = var.hub_rg_name
+    hub_location = var.hub_location
+    storage_account_policy_name = var.storage_account_policy_name
+    hub_vnet_name = var.hub_vnet_name
+    firewall_name               = var.firewall_name
+    firewall_policy_name        = var.firewall_policy_name
+    public_ip_name              = var.public_ip_name
+    route_table_dev_name = var.route_table_dev_name
+    route_table_prod_name = var.route_table_prod_name
+    route_table_qa_name = var.route_table_qa_name
+    spoke_dev_rg_name = var.spoke_dev_rg_name
+    spoke_dev_location = var.spoke_dev_location
+    spoke_dev_vnet_name = var.spoke_dev_vnet_name
+    spoke_dev_subnet_name = var.spoke_dev_subnet_name
+    spoke_qa_rg_name = var.spoke_qa_rg_name
+    spoke_qa_vnet_name = var.spoke_qa_vnet_name
+    spoke_qa_subnet_name = var.spoke_qa_subnet_name
+    spoke_qa_location = var.spoke_qa_location
+    spoke_prod_rg_name = var.spoke_prod_rg_name
+    spoke_prod_location = var.spoke_prod_location
+    spoke_prod_vnet_name = var.spoke_prod_vnet_name
+    spoke_prod_subnet_name = var.spoke_prod_subnet_name
+    subscription1_id = var.subscription1_id
+    subscription_id = var.subscription_id
+    default_tags = {
+    Environment = ""
+    CostCenter  = ""
+    }
+}
