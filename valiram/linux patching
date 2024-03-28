@@ -1,0 +1,6 @@
+apt list --upgradable | grep "\-security"
+
+[3:15 PM] Wilson Kumar
+apt list linux-tools-azure*
+
+apt-get --only-upgrade install OpenSSH*
