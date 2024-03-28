@@ -1,0 +1,25 @@
+$Role_Assignments = Get-Content .\roles.json -Raw | ConvertFrom-Json
+
+foreach($roleAssignment in $Role_Assignments){
+    
+    $ObjectId = $roleAssignment.ObjectId 
+    $RoleDefinitionId = $roleAssignment.RoleDefinitionId 
+    $Scope = $roleAssignment.Scope.Replace($SourceSubscription,$TargetSubscription)
+
+    Write-Host 'ObjectID: ' $ObjectId
+    Write-Host 'RoleDefinitionId: ' $RoleDefinitionId
+    Write-Host 'Scope: ' $Scope
+
+    $role = $null
+
+    $role = Get-AzRoleAssignment -ObjectId $ObjectId -RoleDefinitionId $RoleDefinitionId -Scope $Scope -ErrorAction SilentlyContinue 
+    
+    if($role){
+        Write-Host "Role assignment already exist...`n" -ForegroundColor Green
+    }else{
+        Write-Host "`nAssigning RBAC role..." -ForegroundColor Cyan
+        New-AzRoleAssignment -ObjectId $ObjectId -RoleDefinitionId $RoleDefinitionId -Scope $Scope -Verbose
+    }
+    
+    "`n"
+}

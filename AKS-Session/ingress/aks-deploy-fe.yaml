@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  bcapp-ingress-fe
+  namespace: ingress-basic
+  labels:
+    app: microservice-ingress
+    tier: frontend
+    type: k8s-deploy
+spec:
+  selector:
+    matchLabels:
+      app: microservice-ingress
+      author: MSA
+      type: k8s-ingress-fe
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: microservice-ingress
+        author: MSA
+        type: k8s-ingress-fe
+    spec:
+      containers:
+      - name:  bc-ingress-fe
+        image: azacrmldev.azurecr.io/microservices:fe
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 200m
+            memory: 500Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+        ports:
+        - containerPort: 80
+          name:  nginx-fe
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: bcapp-ingress-ci-fe
+  namespace: ingress-basic
+  labels:
+    app: microservice-ingress
+    tier: fe-service
+    type: k8s-ingress-ci
+spec:
+  selector:
+    app: microservice-ingress
+    author: MSA
+    type: k8s-ingress-fe
+  type: ClusterIP
+  sessionAffinity: None
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ports:
+  - port: 80
+    targetPort: 80

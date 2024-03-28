@@ -1,0 +1,13 @@
+$resourceGroupName = "YourResourceGroupName"
+$csvFilePath = "C:\Path\To\Export.csv"
+$resources = Get-AzResource -ResourceGroupName $resourceGroupName
+$resourceInfo = @()
+foreach ($resource in $resources) {
+   $resourceInfo += [PSCustomObject]@{
+       ResourceType = $resource.ResourceType
+       ResourceName = $resource.Name
+       ResourceLocation = $resource.Location
+       ResourceTags = ($resource.Tags | Out-String).Trim()
+   }
+}
+$resourceInfo | Export-Csv -Path $csvFilePath -NoTypeInformation

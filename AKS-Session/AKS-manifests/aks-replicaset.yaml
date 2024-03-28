@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: bcapp-rs
+  namespace: k8s-sandbox
+  labels:
+    app: k8s-app
+    author: MSA
+    type: k8s-replicaset
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: k8s-app
+      author: MSA
+      type: k8s-pod-replicaset
+  template:
+    metadata:
+      namespace: k8s-sandbox
+      labels:
+        app: k8s-app
+        language: python3
+        author: MSA
+        type: k8s-pod-replicaset
+    spec:
+      containers:
+      - name: bc-sandbox
+        image: msa1999/k8s-sandbox:1
+        resources:
+          limits:
+            cpu: 200m
+            memory: 500Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+

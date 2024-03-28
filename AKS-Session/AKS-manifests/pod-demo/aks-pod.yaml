@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bcapp-pod
+  namespace: k8s-sandbox
+  labels:
+    app: k8s-app
+    language: python3
+    author: MSA
+    type: k8s-pod
+spec:
+  containers:
+  - name: bc-sandbox
+    image: msa1999/k8s-sandbox:1
+    imagePullPolicy: Always
+    resources:
+      limits:
+        cpu: 200m
+        memory: 500Mi
+      requests:
+        cpu: 100m
+        memory: 200Mi
+    ports:
+    - containerPort: 5000
+      name:  flask-app
+    # - name : nginx-fe
+    #   containerPort: 80
+    # envFrom:
+    # - secretRef:
+    #     name: bcapp-datastore
