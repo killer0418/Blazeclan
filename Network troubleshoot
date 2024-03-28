@@ -1,0 +1,11 @@
+Trobleshooting steps for Network
+
+
+1.ping from source to destination
+2.In case ping is not working follow the below checklist
+*Check the ports are opened or not
+*check route tables and network connection (NSG, vnet peering)
+*Try telent on the specific port
+*do nslookup and check if the DNS is configured
+*do traceroute to find out the hopes upto wich we are reaching 
+*try troubleshooting from the last hope you have reached
