@@ -1,0 +1,17 @@
+variable "location" {}
+variable "vm_name_t2" {}
+variable "vm_rg_name_t2" {}
+variable "vm_size_t2" {}
+variable "admin_username_t2" {}
+variable "admin_password_t2" {}
+variable "nic_ids_t2" {}
+variable "disk_caching_t2" {}
+variable "storage_account_type_t2" {}
+variable "publisher_t2" {}
+variable "offer_t2" {}
+variable "sku_t2" {}
+variable "vm_version_t2" {}
+variable "zone_t2" {}
+variable "create_option_t2" {}
+variable "disk_size_gb_t2" {}
+variable "tags_t2" {}

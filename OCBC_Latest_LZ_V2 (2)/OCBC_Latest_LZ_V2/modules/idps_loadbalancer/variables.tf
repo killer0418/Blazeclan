@@ -1,0 +1,12 @@
+variable "lb_name" {}
+variable "location" {}
+variable "rg_name" {}
+variable "subnet_id_int" {}
+variable "subnet_id_ext" {}
+variable "private_ip_address_int" {}
+variable "private_ip_address_ext" {}
+variable "virtual_network_id" {}
+variable "ip_address_int_A" {}
+variable "ip_address_int_B" {}
+variable "ip_address_ext_A" {}
+variable "ip_address_ext_B" {}

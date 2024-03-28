@@ -1,0 +1,2 @@
+variable "subnetAssociatId" {}
+variable "nsgAssociatId" {}

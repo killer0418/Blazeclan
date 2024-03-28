@@ -1,0 +1,9 @@
+variable "vnet_name" {}
+variable "rg_name" {}
+variable "location" {}
+variable "address_space" {}
+#variable "subnet_name_A" {}
+#variable "subnet_name_B" {}
+#variable "address_prefixes_A" {}
+#variable "address_prefixes_B" {}
+variable "tags" {}
